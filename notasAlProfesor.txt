@@ -1,0 +1,49 @@
+Para el correcto funcionamiento del programa se deben ejecutar las siguientes querys
+para tener los datos esenciales
+
+insert into estado
+values(1, 'Parte de Mano de Obra generado', 'generado');
+insert into estado
+values(2, 'Parte de Mano de Obra válido', 'válido');
+insert into estado
+values(3, 'Parte de Mano de Obra inválido', 'inválido');
+insert into estado
+values(4, 'Parte de Mano de Obra validado por supervisor', 'validado');
+insert into estado
+values(5, 'Parte de Mano de Obra corregido', 'corregido');
+insert into estado
+values(10, 'log de validación generado', 'log generado');
+
+insert into turno 
+values(1,'07:00:00','15:00:00','7a15');
+insert into turno 
+values(2,'15:00:00','21:00:00','15a21');
+
+insert into validacion_partemo 
+values(1,'El operario incumple el horario establecido en su turno','incumple horario','ERROR');
+insert into validacion_partemo 
+values(2,'El operario superpone horas entre tareas del mismo día (+horas que entrada-salida)','superposición horaria','ERROR');
+insert into validacion_partemo 
+values(3,'Existen huecos horarios entre tareas del mismo día (-horas que entrada-salida)','hueco horario','ERROR');
+insert into validacion_partemo 
+values(4,'El operario no cumple el horario en su turno','fuera de turno','ERROR');
+
+
+
+Informacion adicional:
+A continuacion se listan los paquetes instalados ademas de los que teniamos al empezar
+en caso de que tengan que instalarlos aparte
+
+key-del:
+docker compose run --rm testing sh //para entrar al test docker 
+npm install key-del //una vez en adentro, para instalarlo
+
+
+//los siguientes 2 en frontend
+ngBootstrap:
+ng add @ng-bootstrap/ng-bootstrap
+
+
+ng2-charts:
+npm install ng2-charts --save --force
+npm install chart.js --save

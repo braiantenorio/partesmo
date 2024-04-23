@@ -1,0 +1,160 @@
+TODO:
+Vista de partes en informes
+fecha definida por defecto en cargar partes
+dropdown en partes
+typeaheads 
+modals
+
+
+Usar calendar en java en vez de LocalDate
+usar cascade en onetomany xdd
+
+mejora proyecto/tareas crud relacion one to many persistencia
+
+vista de turnos
+
+
+notas en clase:
+pantalla del resumen, boton verificar partes llama proceso del backend pasandole la fecha, con
+controlo de esa fecha para adelante
+cuando corro el proceso, 2 soluciones  genero una cabezera o genero una 
+controles salen del resumen no del partes por partes
+controlacion exhaustiva no de primer error
+si esta todo ok, que le log diga que esta bien
+
+por ejemplo cabecera con un nombre del operario y todos los logs
+
+por cada verificacion insertar log 
+O no cabecera y el log de error a cada uno de los partes
+
+
+2 pantalla parecida a resumen pero que agrega un dato que dice si esta con eeror y la lista de errors inclusive o 
+si esta ok
+
+select fecha  , (sub query) select(detalle de partes) limit 1 
+
+en detalle de partes, decir la lista de errores
+
+
+consideraciones:
+cambiar interface por dto en query de informes??
+
+
+Cada grupo de partes tendra todos los logs aunque no cumplan directamente con ello, por ejemplo,
+si tengo un parte que tiene horaDesde 08:00 pero todos los demas estan mal, todos los partes de ese dia tendran ese log 
+
+hasta pagina 16 del libro design principles and patterns robert c martin
+no va principles of package
+
+
+pensar principios de forma transversal, ejemplos
+
+
+
+npm install key-del //eliminar ids
+
+
+usar sub query en informes que diga si al menos algun log es generado o invalido
+para todas estas lineas de resumen, corro el servicio
+generado o corregido
+
+
+las validacion de una fecha para atras, todos los partes que tengan estado generado o corregido
+
+
+
+informes usar pmo.fecha. group by fecha
+//importante
+probar subconsulta que agrarre todos los partes si es que alguno esta corregido o invalidos
+subconsulta
+para que tome todos los partes si es que alguno esta en estado generado o corregido
+
+pensar como a un parte corregido, que conseva sus logs, asignarle valido (conserva sus logs)
+
+tambien ver como hacer add a logs pero que no se repitan
+
+
+
+
+
+A mejorar:
+que los typeahead de parte-detail que busque el turno cuando asigne un operario a parte.operario, no cuando 
+se escribe cualquier cosa en el input
+
+
+
+preguntas para hacer en clase,
+se fuerza la validacion del parte? o el conjunto de partes? informe (en que pantalla?)
+si se valida el parte, si se valida un parte, se deberian validar los otros, no tiene sentido de otra manera
+
+como ocultar los logs sin eliminarlos? en caso de que pase a corregido o a valido
+que sentido tiene el estado de un log? y se puede usar para ocultarlo? como? con un filtro en la entidad?
+
+
+es normal que antes no se desordenaban los partes pero ahora si? solo cambie el service
+pero ahora tengo que ordenar el get de findAll partes.
+
+
+investigar traits (aspectos) forma de implementar patron
+
+
+TODO 09/06
+
+- mostrar estado en informes-
+- mostrar log en detalle de informe (partes de un informe)-
+- boton de forzar validacion-
+- integridad a la hora de modificar un parte-
+- que el boton validar haga algo, como una alert, o algo para saber hizo algo o no (nueva pantalla?) muestra los partes que valido y sus estados?
+- opcional: typeahead de empresas en Crear nuevo proyecto-
+- mostrar turnos en detalle del operario
+
+podriamos usar una convencion, para hacer el soft delete de los logs, que cuando llegue un parte a modificar,
+eliminamos, del objeto, no con crud, y eliminamos llamando a la base de datos por los logs que ya tiene
+
+o dejamos, eliminalos poniendo en true el objeto y luego lo persistimos,
+
+
+TODO:
+- estado en partes de un informe
+- 
+
+
+OPCIONAL
+- clear form de partes y bueno todo mas o menos
+- pantalla de validar
+- 
+
+
+todo:
+-estado en detalle de partes.(facil?)
+
+select com(mes(fecha) log)
+select distinct operario, fecha, logs
+from logs
+group by
+
+mejora;
+cambiar test para que cuando no tenga logs, devuelva un lista vacia en vez de nada 
+eso ahorraria muchos problemas en el backend
+
+TODO
+- paginacion al menos en operarios + - 
+- estadisticas de control de errores (front backend y test?) +
+- arreglar vista de turnos +
+    - hacer 25 para cada turno
+    - los partes los vemos
+- staging datos para demo +
+- guion +
+- notas al profesor + -
+- edit de tareas
+- titulos mas ilustrativos en parte Detail y modificacion
+- mejoras?
+
+ADICIONAL
+- ver si de verdad trae los informes invalidos (todos los partes invalidos) (excluyentemente) - 
+- revisar y mejorar si se puede el tema de la carga de turnos
+- ver rapidamente todos los business para identificar mejoras o mover procesos del presenter al service
+- mensajes de alert y tooltip
+
+
+- falta poner para reparar, osea invalidos

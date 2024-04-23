@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+
+.componente-con-espacio {
+  margin-top: 20px; /*  padding-top: 20px */
+}
+
+.componente-con-menos-espacio {
+  margin-top: 10px; /*  padding-top: 20px */
+}
+
+.componente-con-espacio .row .col-md-2 {
+  float: right;
+}
+
+.componente-con-espacio .row .col-md-2:last-child {
+  float: right;
+}
